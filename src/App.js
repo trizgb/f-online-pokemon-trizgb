@@ -8,27 +8,45 @@ class App extends Component {
 
     this.state = {
       results: []
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getPokemons();
   }
 
   getPokemons() {
     requestPokemons()
       .then(data => {
+
+        const dataResults = data.results.map((item, index) => {
+          return { ...item, id: index };
+        });
+
         this.setState({
-          results: data.results
-        })
-      })
+          results: dataResults
+        });
+      });
   }
-  
+
   render() {
-    
     return (
       <div className="app">
-        Catch'em all
+        <header className="app__header">
+         <h1 className="app__title">pokedex</h1>
+        </header>
+        <main className="app__main">
+          <ul className="pokemon__list">
+          {this.state.results.map((item, index) => {
+            return (
+              <li className="pokemon__list-item" key={index}>{item.name}</li>
+            )
+          })}
+          </ul>
+        </main>
+        <footer className="app__footer">
+          Footer
+        </footer>
       </div>
     );
   }
