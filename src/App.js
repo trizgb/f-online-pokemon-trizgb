@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      results: [],
+      pokemon: [],
       pokeSearch: ''
     };
 
@@ -20,22 +20,47 @@ class App extends Component {
   }
 
   getPokemons() {
+    let pokemonDataUrl = [];
+
     requestPokemons()
       .then(data => {
-        const dataResults = data.results.map(item => {
+        data.results.map(item => {
           let urlPokemon = item.url;
 
-          const requestUrl = fetch(urlPokemon).then(response => response.json());
+          let requestUrl = fetch(urlPokemon).then(response => response.json());
           requestUrl.then(data => {
-            console.log(data)
-          })
-        });
-
-        
-        this.setState({
-          results: dataResults
+            pokemonDataUrl.push(data);
+            this.getInfoPokemon(pokemonDataUrl);
+          });
         });
       });
+  }
+
+  getInfoPokemon(data) {
+    let pokemonInfo = [];
+
+    data.map(item => {
+      let types = [];
+      item.types.map(pokeTypes => {
+      return types.push(pokeTypes.type.name);
+      })
+
+      let pokeJson = {
+        'id': item.id,
+        'name': item.name,
+        'type': types
+      }
+
+      pokemonInfo.push(pokeJson);
+      this.setState({
+        pokemon: pokemonInfo.sort(((a, b) => a.id - b.id))
+      })
+
+      return pokemonInfo;
+
+    });
+
+
   }
 
   searchPokemon(e) {
@@ -45,15 +70,6 @@ class App extends Component {
       pokeSearch: query
     })
   }
-
-  // filterPokemons() {
-  //   const filteredResults = this.state.results.filter(item => {
-  //     const pokeName = item.name;
-  //     return this.state.pokeSearch === '' || pokeName.toLocaleLowerCase().includes(this.state.pokeSearch.toLocaleLowerCase())
-  //   })
-
-  //   return filteredResults;
-  // }
 
   render() {
     return (
@@ -66,7 +82,8 @@ class App extends Component {
           </div>
         </header>
         <main className="app__main">
-          <ul className="pokemon__list">
+          <ul className="pokemons__list">
+
           </ul>
         </main>
         <footer className="app__footer">
