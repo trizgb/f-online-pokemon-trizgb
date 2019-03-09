@@ -70,7 +70,19 @@ class App extends Component {
     })
   }
 
+  filterPokemon() {
+    const filteredResults = this.state.pokemon.filter(item => {
+      const name = item.name;
+
+      return (name.toLocaleUpperCase().includes(this.state.pokeSearch.toLocaleUpperCase())) 
+    })
+    return filteredResults;
+  }
+
+
   render() {
+    const filterPokemonResults = this.filterPokemon();
+
     return (
       <div className="app">
         <header className="app__header">
@@ -82,7 +94,7 @@ class App extends Component {
         </header>
         <main className="app__main">
           <ul className="pokemons__list">
-          {this.state.pokemon.map((item, index) => {
+          {filterPokemonResults.map((item, index) => {
             return (
               <li className="pokemons__list-pokemon" key={index}>
               <img className="pokemon-image" src={item.image} alt={item.name}></img>
