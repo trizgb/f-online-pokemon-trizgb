@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import { requestPokemons } from './services/PokemonService';
+import Filter from './components/Filter';
+import PokeList from './components/PokeList';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +44,7 @@ class App extends Component {
     data.map(item => {
       let types = [];
       item.types.map(pokeTypes => {
-      return types.push(pokeTypes.type.name);
+        return types.push(pokeTypes.type.name);
       })
 
       let pokeJson = {
@@ -74,7 +76,7 @@ class App extends Component {
     const filteredResults = this.state.pokemon.filter(item => {
       const name = item.name;
 
-      return (name.toLocaleUpperCase().includes(this.state.pokeSearch.toLocaleUpperCase())) 
+      return (name.toLocaleUpperCase().includes(this.state.pokeSearch.toLocaleUpperCase()))
     })
     return filteredResults;
   }
@@ -87,24 +89,10 @@ class App extends Component {
       <div className="app">
         <header className="app__header">
           <h1 className="app__title">pokedex</h1>
-          <div className="app__field">
-            <label className="app__field-text" htmlFor="search"></label>
-            <input type="text" className="app__field-search" onKeyUp={this.searchPokemon} />
-          </div>
+          <Filter actionFilter={this.searchPokemon} />
         </header>
         <main className="app__main">
-          <ul className="pokemons__list">
-          {filterPokemonResults.map((item, index) => {
-            return (
-              <li className="pokemons__list-pokemon" key={index}>
-              <img className="pokemon-image" src={item.image} alt={item.name}></img>
-              <p className="pokemon-name">{item.name}</p>
-              <p className="pokemon-id">{item.id}</p>
-              <ul className="pokemon-types">{item.type.map((i, k) => {return <li key={k}>{i}</li>})}</ul>
-              </li>
-            )
-          })}
-          </ul>
+          <PokeList filterPokemonR={filterPokemonResults} />
         </main>
         <footer className="app__footer">
           <p className="footer__text">Beatriz Gomez | © Adalab 2019</p>
