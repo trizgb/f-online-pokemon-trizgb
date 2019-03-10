@@ -9,10 +9,12 @@ class PokeList extends Component {
         {filterPokemonR.map((item, index) => {
           return (
             <li className="pokemons__list-pokemon" key={index}>
-              <img className="pokemon-image" src={item.image} alt={item.name}></img>
-              <p className="pokemon-name">{item.name}</p>
-              <p className="pokemon-id">{item.id}</p>
-              <ul className="pokemon-types">{item.type.map((i, k) => { return <li key={k}>{i}</li> })}</ul>
+              <div className="pokemon__wrapper">
+                <img className="pokemon__image" src={item.image} alt={item.name}></img>
+                <div className="pokemon__id">ID / {item.id}</div>
+                <h2 className="pokemon__name">{item.name}</h2>
+                <ul className="pokemon__types">{item.type.map((i, k) => { return <li key={k}>{i}</li> })}</ul>
+              </div>
             </li>
           )
         })}

@@ -9,7 +9,7 @@ class Filter extends Component {
     return (
       <div className="app__field">
         <label className="app__field-text" htmlFor="search"></label>
-        <input type="text" className="app__field-search" onKeyUp={actionFilter} />
+        <input type="text" className="app__field-search" placeholder="Search your Pokemon" onKeyUp={actionFilter} />
       </div>
     )
   }

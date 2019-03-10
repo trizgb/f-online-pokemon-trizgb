@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { requestPokemons } from './services/PokemonService';
 import Filter from './components/Filter';
 import PokeList from './components/PokeList';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
