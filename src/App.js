@@ -34,6 +34,7 @@ class App extends Component {
             pokemonDataUrl.push(data);
             this.getInfoPokemon(pokemonDataUrl);
           });
+          return requestUrl;
         });
       });
   }

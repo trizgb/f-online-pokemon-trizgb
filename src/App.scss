@@ -1,4 +1,8 @@
 // App Component
+body {
+  margin: 0;
+  background-color: yellow;
+}
 
 // .app {
 
@@ -8,13 +12,15 @@
 
 // }
 
-// .app__title {
+.app__title {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
 
-// }
-
-// .app__main {
-
-// }
+.app__main {
+  margin: 0 auto;
+}
 
 // .app__footer {
 
@@ -23,31 +29,37 @@
 
 //Filter Component
 
-// .app__field {
-
-// }
-
-// .app__field-text {
-
-// }
+.app__field {
+  display: flex;
+  justify-content: center;
+}
 
 .app__field-search {
-    border: none;
-    outline: none;
-    border-bottom: 1px solid darkgrey;
-    height: 20px;
+  height: 40px;
+  width: 500px;
+  border: none;
+  outline: none;
+  text-align: center;
+  box-shadow: 0px 0px 10px 0px rgba(128, 128, 128, 0.719);
 }
 
 //PokeList Component
 
-// .pokemons__list {
-  
-  
-// }
+.pokemons__list {
+  margin: 25px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .pokemons__list-pokemon {
   list-style: none;
-
+  width: 300px;
+  padding: 0;
+  margin: 0 0 10px;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 10px 0px rgba(189, 189, 189, 0.836);
 
 }
 
@@ -55,19 +67,53 @@
 
 // }
 
-// .pokemon__image {
-    
-// }
+.image__container{
+  height: 200px;
+  width: 300px;
+  background-color: rgb(230, 230, 230);  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.pokemon__image {
+  height: 100px;
+  width: 100px;
+}
+
+.info__container{
+  background-color: white;
+}
 
 // .pokemon__id {
     
 // }
 
-// .pokemon__name {
-    
-// }
+.pokemon__name {
+  text-transform: capitalize;
+  margin: 30px 0 5px 15px;
+
+}
 
 .pokemon__types {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+}
 
+.pokemon__types-item {
+  height: 30px;
+  width: 80px;
+  text-transform: uppercase;
+  border: 1px solid rgba(63, 61, 61, 0.904);
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 30px 15px;
 }
