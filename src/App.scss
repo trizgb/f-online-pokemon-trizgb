@@ -1,16 +1,38 @@
-// App Component
 body {
   margin: 0;
-  background-color: yellow;
+  background-color: gold;
+  overflow-x: hidden;
 }
 
-// .app {
+//>> App Component
 
-// }
+.app {
+  position: relative;
+  font-family: 'Inconsolata', monospace;
+}
 
 // .app__header {
-
 // }
+
+.triangle {
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-top: 45px solid black;
+  position: fixed;
+  z-index: -1;
+}
+
+.t-left {
+  transform: rotate(135deg);
+  left: -30px;
+  top: -10px;
+}
+
+.t-right {
+  transform: rotate(-135deg);
+  right: -30px;
+  top: -10px;
+}
 
 .app__title {
   display: flex;
@@ -20,14 +42,42 @@ body {
 
 .app__main {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
 }
 
-// .app__footer {
+.app__footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
+// .app__footer-text {
 // }
 
+.circle {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  position: fixed;
+  z-index: -1;
+}
 
-//Filter Component
+.c-left {
+  left: 0;
+  bottom: 0;
+  border-radius: 0 100% 0 0 ;
+}
+
+.c-right {
+  right: 0;
+  bottom: 0;
+  border-radius: 100% 0 0 0;
+}
+
+//>> Filter Component
 
 .app__field {
   display: flex;
@@ -43,7 +93,7 @@ body {
   box-shadow: 0px 0px 10px 0px rgba(128, 128, 128, 0.719);
 }
 
-//PokeList Component
+//>> PokeList Component
 
 .pokemons__list {
   margin: 25px 0;
@@ -58,19 +108,18 @@ body {
   width: 300px;
   padding: 0;
   margin: 0 0 10px;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(192, 192, 192);
   box-shadow: 0px 0px 10px 0px rgba(189, 189, 189, 0.836);
-
 }
 
-// .pokemon__wrapper {
-
-// }
+.pokemon__wrapper {
+  position: relative;
+}
 
 .image__container{
   height: 200px;
   width: 300px;
-  background-color: rgb(230, 230, 230);  
+  background-color: rgb(219, 219, 219);  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,14 +135,24 @@ body {
   background-color: white;
 }
 
-// .pokemon__id {
-    
-// }
+.pokemon__id {
+  position: absolute;
+  bottom: 142px;
+  left: 0px;
+  background-color: rgb(204, 204, 204);  
+  width: 55px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(184, 115, 11);
+  font-size: 14px;
+}
 
 .pokemon__name {
   text-transform: capitalize;
-  margin: 30px 0 5px 15px;
-
+  margin: 0 0 5px 15px;
+  padding-top: 50px;
 }
 
 .pokemon__types {
@@ -103,14 +162,15 @@ body {
   display: flex;
   justify-content: flex-start;
   text-align: center;
+  font-size: 14px;
 }
 
 .pokemon__types-item {
   height: 30px;
-  width: 80px;
+  width: 70px;
   text-transform: uppercase;
   border: 1px solid rgba(63, 61, 61, 0.904);
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: white;
   display: flex;
   justify-content: center;

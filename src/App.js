@@ -91,12 +91,16 @@ class App extends Component {
         <header className="app__header">
           <h1 className="app__title">pokedex</h1>
           <Filter actionFilter={this.searchPokemon} />
+          <div className="triangle t-left"></div>
+          <div className="triangle t-right"></div>
         </header>
         <main className="app__main">
           <PokeList filterPokemonR={filterPokemonResults} />
         </main>
         <footer className="app__footer">
           <p className="footer__text">Beatriz Gomez | © Adalab 2019</p>
+          <div className="circle c-left"></div>
+          <div className="circle c-right"></div>
         </footer>
       </div>
     );
